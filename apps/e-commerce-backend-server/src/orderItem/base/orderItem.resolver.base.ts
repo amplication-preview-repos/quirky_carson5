@@ -211,4 +211,12 @@ export class OrderItemResolverBase {
     }
     return result;
   }
+
+  @graphql.Query(() => [OrderItem])
+  async GetAllOrderItems(
+    @graphql.Args()
+    args: string
+  ): Promise<OrderItem[]> {
+    return this.service.GetAllOrderItems(args);
+  }
 }

@@ -18,6 +18,8 @@ import {
   Product as PrismaProduct,
 } from "@prisma/client";
 
+import { CartItem } from "./CartItem";
+
 export class CartItemServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
@@ -65,5 +67,8 @@ export class CartItemServiceBase {
         where: { id: parentId },
       })
       .product();
+  }
+  async GetAllCartItems(args: string): Promise<CartItem[]> {
+    throw new Error("Not implemented");
   }
 }

@@ -16,6 +16,7 @@ import {
   CartItem as PrismaCartItem,
   User as PrismaUser,
 } from "@prisma/client";
+import { Cart } from "./Cart";
 
 export class CartServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -57,5 +58,8 @@ export class CartServiceBase {
         where: { id: parentId },
       })
       .user();
+  }
+  async GetAllCarts(args: string): Promise<Cart[]> {
+    throw new Error("Not implemented");
   }
 }

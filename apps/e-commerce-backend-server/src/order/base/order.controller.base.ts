@@ -352,4 +352,21 @@ export class OrderControllerBase {
       select: { id: true },
     });
   }
+
+  @common.Get("/orders")
+  @swagger.ApiOkResponse({
+    type: Order,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllOrders(
+    @common.Body()
+    body: string
+  ): Promise<Order[]> {
+    return this.service.GetAllOrders(body);
+  }
 }

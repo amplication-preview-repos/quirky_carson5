@@ -189,4 +189,12 @@ export class CartResolverBase {
     }
     return result;
   }
+
+  @graphql.Query(() => [Cart])
+  async GetAllCarts(
+    @graphql.Args()
+    args: string
+  ): Promise<Cart[]> {
+    return this.service.GetAllCarts(args);
+  }
 }

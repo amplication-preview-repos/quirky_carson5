@@ -18,6 +18,8 @@ import {
   User as PrismaUser,
 } from "@prisma/client";
 
+import { Order } from "./Order";
+
 export class OrderServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
@@ -58,5 +60,8 @@ export class OrderServiceBase {
         where: { id: parentId },
       })
       .user();
+  }
+  async GetAllOrders(args: string): Promise<Order[]> {
+    throw new Error("Not implemented");
   }
 }

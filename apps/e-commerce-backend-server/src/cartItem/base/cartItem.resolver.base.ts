@@ -211,4 +211,12 @@ export class CartItemResolverBase {
     }
     return result;
   }
+
+  @graphql.Query(() => [CartItem])
+  async GetAllCartItems(
+    @graphql.Args()
+    args: string
+  ): Promise<CartItem[]> {
+    return this.service.GetAllCartItems(args);
+  }
 }

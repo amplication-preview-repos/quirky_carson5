@@ -223,4 +223,12 @@ export class ProductResolverBase {
     }
     return result;
   }
+
+  @graphql.Query(() => [Product])
+  async GetAllProducts(
+    @graphql.Args()
+    args: string
+  ): Promise<Product[]> {
+    return this.service.GetAllProducts(args);
+  }
 }

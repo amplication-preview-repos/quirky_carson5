@@ -279,4 +279,21 @@ export class OrderItemControllerBase {
       throw error;
     }
   }
+
+  @common.Get("/order-items")
+  @swagger.ApiOkResponse({
+    type: OrderItem,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllOrderItems(
+    @common.Body()
+    body: string
+  ): Promise<OrderItem[]> {
+    return this.service.GetAllOrderItems(body);
+  }
 }

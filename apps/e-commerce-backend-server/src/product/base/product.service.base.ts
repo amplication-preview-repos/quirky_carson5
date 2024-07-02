@@ -19,6 +19,8 @@ import {
   Category as PrismaCategory,
 } from "@prisma/client";
 
+import { Product } from "./Product";
+
 export class ProductServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
@@ -72,5 +74,8 @@ export class ProductServiceBase {
         where: { id: parentId },
       })
       .category();
+  }
+  async GetAllProducts(args: string): Promise<Product[]> {
+    throw new Error("Not implemented");
   }
 }

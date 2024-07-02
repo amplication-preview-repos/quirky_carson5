@@ -18,6 +18,8 @@ import {
   Product as PrismaProduct,
 } from "@prisma/client";
 
+import { OrderItem } from "./OrderItem";
+
 export class OrderItemServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
@@ -67,5 +69,8 @@ export class OrderItemServiceBase {
         where: { id: parentId },
       })
       .product();
+  }
+  async GetAllOrderItems(args: string): Promise<OrderItem[]> {
+    throw new Error("Not implemented");
   }
 }

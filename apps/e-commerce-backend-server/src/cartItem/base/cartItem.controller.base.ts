@@ -279,4 +279,21 @@ export class CartItemControllerBase {
       throw error;
     }
   }
+
+  @common.Get("/cart-items")
+  @swagger.ApiOkResponse({
+    type: CartItem,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllCartItems(
+    @common.Body()
+    body: string
+  ): Promise<CartItem[]> {
+    return this.service.GetAllCartItems(body);
+  }
 }

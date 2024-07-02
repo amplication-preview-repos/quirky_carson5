@@ -163,4 +163,12 @@ export class CategoryResolverBase {
 
     return results;
   }
+
+  @graphql.Query(() => [Category])
+  async GetAllCategories(
+    @graphql.Args()
+    args: string
+  ): Promise<Category[]> {
+    return this.service.GetAllCategories(args);
+  }
 }

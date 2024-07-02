@@ -420,4 +420,21 @@ export class UserControllerBase {
       select: { id: true },
     });
   }
+
+  @common.Get("/users")
+  @swagger.ApiOkResponse({
+    type: User,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllUsers(
+    @common.Body()
+    body: string
+  ): Promise<User[]> {
+    return this.service.GetAllUsers(body);
+  }
 }

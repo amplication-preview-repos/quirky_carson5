@@ -299,4 +299,21 @@ export class CategoryControllerBase {
       select: { id: true },
     });
   }
+
+  @common.Get("/categories")
+  @swagger.ApiOkResponse({
+    type: Category,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllCategories(
+    @common.Body()
+    body: string
+  ): Promise<Category[]> {
+    return this.service.GetAllCategories(body);
+  }
 }

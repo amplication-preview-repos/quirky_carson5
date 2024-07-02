@@ -195,4 +195,12 @@ export class OrderResolverBase {
     }
     return result;
   }
+
+  @graphql.Query(() => [Order])
+  async GetAllOrders(
+    @graphql.Args()
+    args: string
+  ): Promise<Order[]> {
+    return this.service.GetAllOrders(args);
+  }
 }

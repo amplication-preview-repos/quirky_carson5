@@ -471,4 +471,21 @@ export class ProductControllerBase {
       select: { id: true },
     });
   }
+
+  @common.Get("/products")
+  @swagger.ApiOkResponse({
+    type: Product,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllProducts(
+    @common.Body()
+    body: string
+  ): Promise<Product[]> {
+    return this.service.GetAllProducts(body);
+  }
 }

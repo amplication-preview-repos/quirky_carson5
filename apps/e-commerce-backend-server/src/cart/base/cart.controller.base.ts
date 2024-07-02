@@ -337,4 +337,21 @@ export class CartControllerBase {
       select: { id: true },
     });
   }
+
+  @common.Get("/carts")
+  @swagger.ApiOkResponse({
+    type: Cart,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async GetAllCarts(
+    @common.Body()
+    body: string
+  ): Promise<Cart[]> {
+    return this.service.GetAllCarts(body);
+  }
 }

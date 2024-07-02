@@ -175,4 +175,12 @@ export class UserResolverBase {
 
     return results;
   }
+
+  @graphql.Query(() => [User])
+  async GetAllUsers(
+    @graphql.Args()
+    args: string
+  ): Promise<User[]> {
+    return this.service.GetAllUsers(args);
+  }
 }

@@ -18,6 +18,7 @@ import {
 } from "@prisma/client";
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
+import { User } from "./User";
 
 export class UserServiceBase {
   constructor(
@@ -85,5 +86,8 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .orders(args);
+  }
+  async GetAllUsers(args: string): Promise<User[]> {
+    throw new Error("Not implemented");
   }
 }
